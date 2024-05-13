@@ -57,8 +57,7 @@ fig.add_trace(go.Bar(
 fig.update_layout(title='Netflix Yearly Subscriber Growth Rate', xaxis_title='Year', yaxis_title='Yearly Growth Rate (%)')
 #fig.show()
 
-"""Time Series Forecasting using ARIMA to forecast the number of subscriptions of Netflix using Python. 
-I will start by converting the data into a time series format:"""
+"""Time Series Forecasting using ARIMA to forecast the number of subscriptions of Netflix using Python."""
 
 time_series = data.set_index('Time Period')['Subscribers']
 
@@ -76,14 +75,13 @@ results = model.fit()
 print(results.summary())
 
 
-"""Now here’s how to make predictions using the trained model to forecast the number of subscribers 
-for the next five quarters:"""
+"""Make predictions using the trained model to forecast the number of subscribers for the next five quarters:"""
 
 future_steps = 5
 predictions = results.predict(len(time_series), len(time_series) + future_steps - 1)
 predictions = predictions.astype(int)
 
-"""let’s visualize the results of Netflix Subscriptions Forecasting for the next five quarters"""
+"""Visualize the results of Netflix Subscriptions Forecasting for the next five quarters"""
 
 #Create a DataFrame with the original data and predictions
 forecast = pd.DataFrame({'Original': time_series, 'Predictions': predictions})
